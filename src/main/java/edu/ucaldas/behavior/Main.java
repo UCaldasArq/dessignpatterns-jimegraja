@@ -2,17 +2,22 @@ package edu.ucaldas.behavior;
 
 public class Main {
     public static void main(String[] args) {
+        // 1. Crear la cadena de responsabilidad
         Handler chain = SupportHandler.createChain();
 
+        // 2. Simular solicitudes con distintos niveles
         String[] solicitudes = {
-                "Necesito ayuda básica con mi cuenta",
-                "Tengo una solicitud intermedia sobre el sistema",
-                "Requiero soporte avanzado para configuración del servidor",
-                "Tipo de solicitud desconocido"
+                "básica",
+                "intermedia",
+                "avanzada",
+                "desconocida"
         };
 
-        for (String req : solicitudes) {
-            System.out.println(chain.handleRequest(req));
+        // 3. Enviar cada solicitud y mostrar la respuesta
+        for (String solicitud : solicitudes) {
+            String respuesta = chain.handleRequest(solicitud);
+            System.out.println("Solicitud: " + solicitud + " -> Respuesta: " + respuesta);
         }
     }
 }
+
